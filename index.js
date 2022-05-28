@@ -1,15 +1,3 @@
-const expresss = require("express");
-const app = expresss();
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
-app.listen(3000, () => {
-  console.log("Project Ready");
-});
-
-
 const fs = require('node:fs'); // Provides a lot of very useful functionality to access and interact with the file system
 const { Client, Intents, Collection } = require('discord.js');  // To define Client, Intents, and collection discordjs is required
 const { token } = require('./config.json'); // read config.json to find the discord token
