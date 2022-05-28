@@ -9,6 +9,9 @@ You can invite the bot [here](https://discord.com/api/oauth2/authorize?client_id
 ```markdown
 - Discord User Stats
 - Discord Server Stats
+- Minecraft User Stats (WIP, 25% Done!)
+- Roblox User Stats (WIP, 0% Done)
+- Valorant User Stats (WIP, 0% Done)
 ```
 
 Currently in Development by **bond#8985**
