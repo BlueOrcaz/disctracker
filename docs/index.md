@@ -7,11 +7,18 @@ You can invite the bot [here](https://discord.com/api/oauth2/authorize?client_id
 ### Supported Stats:
 
 ```markdown
+Supported:
 - Discord User Stats
 - Discord Server Stats
 - Minecraft User Stats
-- Roblox User Stats (WIP, 0% Done)
+
+In Development:
+- Roblox User Stats (WIP, 5% Done)
+
+Planning:
 - Valorant User Stats (WIP, 0% Done)
+- Steam User Stats (WIP, 0% Done)
+- 
 ```
 
 Currently in Development by **bond#8985**
