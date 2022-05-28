@@ -1,6 +1,6 @@
 const fs = require('node:fs'); // Provides a lot of very useful functionality to access and interact with the file system
 const { Client, Intents, Collection } = require('discord.js');  // To define Client, Intents, and collection discordjs is required
-const { token } = require('./config.json'); // read config.json to find the discord token
+const { token } = process.env.DISCORD_TOKEN //require('./config.json'); // read config.json to find the discord token
 const client = new Client({ intents: [Intents.FLAGS.GUILDS]}); // Enables intents 
 
 client.commands = new Collection(); // Utility class - holds key value pairs and remembers the original insertion order of the keys. 
