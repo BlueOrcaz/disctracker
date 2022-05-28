@@ -16,7 +16,7 @@ module.exports = {
             option
                 .setName('mcuser')
                 .setDescription('Put Minecraft: Java Edition username in here to check user stats')
-                .setRequired(false) 
+                .setRequired(true) 
             ),
                 
         
