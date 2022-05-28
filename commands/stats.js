@@ -28,7 +28,7 @@ module.exports = {
         //  .setURL('https://discord.js.org/')
             .setAuthor({ name: 'DiscTracker#5743', iconURL: 'https://i.imgur.com/063Nm4O.png' /*, url: 'https://discord.js.org' */ })
             .setDescription(`Discord user statistics for ${interaction.options.getUser("user", true)}`)
-            .setThumbnail(u.displayAvatarURL())
+            .setThumbnail(u.displayAvatarURL({dynamic: true}))
             .addFields(
                 { name: 'Username and Tag:', value:` ${u.tag}`},
                 { name: 'Registration Date:', value:`<t:${Math.round(u.createdTimestamp / 1000)}:R>`},
