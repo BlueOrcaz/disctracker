@@ -13,12 +13,14 @@ Supported:
 - Minecraft User Stats
 
 In Development:
-- Roblox User Stats (WIP, 5% Done)
+- Steam User Stats (WIP, 0% Done)
+
 
 Planning:
+- Roblox User Stats (WIP, 0% Done)
 - Valorant User Stats (WIP, 0% Done)
-- Steam User Stats (WIP, 0% Done)
-- 
+- Fortnite User Stats (WIP, 0% Done)
+- Hypixel User Stats  (WIP, 0% Done)
 ```
 
 Currently in Development by **bond#8985**
