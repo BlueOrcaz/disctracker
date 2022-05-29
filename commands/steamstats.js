@@ -33,6 +33,7 @@ module.exports = {
             steam.getUserOwnedGames(id).then(ownedgames => {
         //   console.log(id); debug
         //   console.log(JSON.stringify()); debug
+        // check for the arrays if they are empty or not in order to return a "noinfo"
            const { MessageEmbed } = require('discord.js');
     
            const Embed  = new MessageEmbed()
@@ -79,7 +80,7 @@ module.exports = {
         console.log(JSON.stringify(recentgames));
 
 
-        
+        // check for the arrays if they are empty or not in order to return a "noinfo"
 
         
         const Embed = new MessageEmbed()
