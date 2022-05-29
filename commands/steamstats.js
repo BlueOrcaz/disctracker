@@ -28,6 +28,7 @@ module.exports = {
             steam.getUserLevel(id).then(lvl => {
             steam.getUserSummary(id).then(summary => { 
             steam.getUserRecentGames(id).then(recentgames => {
+		    if (typeof recentgames !== 'undefined' && recentgames.length > 0) {recentgames[0] = 'None'}
             steam.getUserBans(id).then(bans => {
             steam.getUserGroups(id).then(groups => {
             steam.getUserOwnedGames(id).then(ownedgames => {
@@ -47,10 +48,7 @@ module.exports = {
                    { name: 'Account Creation Date:', value: `<t:${Math.round(summary.createdAt / 1000)}:R>` },
                    { name: 'Account Level:', value: `${lvl}`},
                    { name: 'Number of Games Owned:', value: `${JSON.stringify(ownedgames.length)}`},
-                   { name: 'Last Played:', value: `${JSON.stringify(
-			   if (typeof image_array !== 'undefined' && image_array.length > 0) {return recentgames[0].name
-			   )}
-		   )}`},
+                   { name: 'Last Played:', value: `${JSON.stringify(recentgames[0].name)}`},
                    { name: 'Number of VAC Bans:', value: `${JSON.stringify(bans.vacBans)}`},
                    { name: 'Days since last VAC Ban:', value: `${JSON.stringify(bans.daysSinceLastBan)}`},
                    { name: 'Last Online:', value: `<t:${Math.round(summary.lastLogOffAt / 1000)}:R>`},
