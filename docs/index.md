@@ -11,9 +11,10 @@ Supported:
 - Discord User Stats
 - Discord Server Stats
 - Minecraft User Stats
+- Steam User Stats
 
 In Development:
-- Steam User Stats (WIP, 50% Done)
+
 
 
 Planning:
