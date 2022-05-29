@@ -28,10 +28,12 @@ module.exports = {
             steam.getUserLevel(id).then(lvl => {
             steam.getUserSummary(id).then(summary => { 
             steam.getUserRecentGames(id).then(recentgames => {
-		    if (typeof recentgames !== 'undefined' && recentgames.length > 0) {recentgames[0] = 'None'}
+		    if (typeof recentgames !== 'undefined' && recentgames.length > 0) {recentgames[0] = 'None'} // accessing recent game array (the 3 most recent games)
             steam.getUserBans(id).then(bans => {
             steam.getUserGroups(id).then(groups => {
+            if (typeof groups !== 'undefined' && groups.length > 0) {groups = 'None'} // I am not accessing an array just its length
             steam.getUserOwnedGames(id).then(ownedgames => {
+            if (typeof ownedgames !== 'undefined' && ownedgames.length > 0) {ownedgames = 'None'} // I am not accessing an array just its length
         //   console.log(id); debug
         //   console.log(JSON.stringify()); debug
         // check for the arrays if they are empty or not in order to return a "noinfo"
@@ -75,9 +77,12 @@ module.exports = {
         steam.getUserSummary(user).then(summary => {
         steam.getUserLevel(user).then(lvl => {
         steam.getUserRecentGames(user).then(recentgames => {
+        if (typeof recentgames !== 'undefined' && recentgames.length > 0) {recentgames[0] = 'None'} // accessing recent game array (the 3 most recent games)
         steam.getUserBans(user).then(bans => {    
         steam.getUserGroups(user).then(groups => {
+        if (typeof groups !== 'undefined' && groups.length > 0) {groups = 'None'} // I am not accessing an array just its length
         steam.getUserOwnedGames(user).then(ownedgames => {
+        if (typeof ownedgames !== 'undefined' && ownedgames.length > 0) {ownedgames = 'None'} // I am not accessing an array just its length
         console.log(JSON.stringify(recentgames));
 
 
