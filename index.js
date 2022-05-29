@@ -1,3 +1,4 @@
+require('dotenv').config();
 const fs = require('node:fs'); // Provides a lot of very useful functionality to access and interact with the file system
 const { Client, Intents, Collection } = require('discord.js');  // To define Client, Intents, and collection discordjs is required
 const { token } = process.env.DISCORD_TOKEN //require('./config.json'); // read config.json to find the discord token
