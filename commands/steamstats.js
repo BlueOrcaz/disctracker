@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder, EmbedAssertions } = require('@discordjs/builders');
 const { fs } = require('fs');
 const { measureMemory } = require('vm');
 
@@ -24,12 +24,14 @@ module.exports = {
 
     const { MessageEmbed } = require('discord.js');
 
-    const Emebed = new MessageEmbed()
+    const Embed = new MessageEmbed()
         .setColor('RANDOM')
         .setTitle('Steam User Statistics')
         .setAuthor({ name: 'DiscTracker#5743', iconURL: 'https://i.imgur.com/063Nm4O.png' /*, url: 'https://discord.js.org' */ })
         .setDescription(`Steam user statistics for ${interaction.options.get("steamuser")}`)
         .setThumbnail('https://avatars.cloudflare.steamstatic.com/7572a7b297aba23adef10c05e51149727c4a2ba7_full.jpg')
+
+    await interaction.reply({ embeds: [Embed]});
 
     steam.resolve(`https://steamcommunity.com/id/${user}`).then(summary => {
         console.log(summary);
