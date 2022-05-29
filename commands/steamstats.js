@@ -49,7 +49,7 @@ module.exports = {
                    { name: 'Number of Games Owned:', value: `${JSON.stringify(ownedgames.length)}`},
                    { name: 'Last Played:', value: `${JSON.stringify(
 			   if (typeof image_array !== 'undefined' && image_array.length > 0) {return recentgames[0].name
-			   }
+			   )}
 		   )}`},
                    { name: 'Number of VAC Bans:', value: `${JSON.stringify(bans.vacBans)}`},
                    { name: 'Days since last VAC Ban:', value: `${JSON.stringify(bans.daysSinceLastBan)}`},
