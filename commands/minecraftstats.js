@@ -43,7 +43,7 @@ module.exports = {
         .setTimestamp()
         await interaction.reply({ embeds: [Embed] });
     }, catch(e) {
-        await interaction.reply('Minecraft User Not found!')
+        interaction.reply('Minecraft User Not found!')
     
 	},
 };
