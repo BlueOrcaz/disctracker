@@ -30,7 +30,7 @@ module.exports = {
         .setTitle('Steam User Statistics')
         .setAuthor({ name: 'DiscTracker#5743', iconURL: 'https://i.imgur.com/063Nm4O.png' /*, url: 'https://discord.js.org' */ })
         .setDescription(`Steam user statistics for ${interaction.options.get("steamuser", true)}`)
-    console.log(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_KEY}&steamids=${steam.resolve(`https://steamcommunity.com/id/${user}`)}`);
+    console.log(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_KEY}&steamids=${steam.resolve(`https://steamcommunity.com/id/${user}`).then(summary => { console.log(summary)})}`);
 
     await interaction.reply({ embeds: [Embed]});
 
