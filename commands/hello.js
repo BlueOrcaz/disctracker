@@ -7,5 +7,8 @@ module.exports = {
 	async execute(interaction) {
 		const message = await interaction.reply({content: 'Hello, I am DiscTracker, a bot that can track your statistics!', fetchReply: true});
         message.react('👋');
-	},
+	},catch (error) {
+        console.error(error);
+        interaction.reply("Error"); // logs an error 
+    }
 };

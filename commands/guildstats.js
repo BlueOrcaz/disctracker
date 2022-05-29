@@ -24,5 +24,8 @@ module.exports = {
         
         await interaction.reply({ embeds: [Embed]});
         
-	},
+	},catch (error) {
+        console.error(error);
+        interaction.reply("Error"); // logs an error 
+    }
 };

@@ -42,7 +42,8 @@ module.exports = {
         )
         .setTimestamp()
         await interaction.reply({ embeds: [Embed] });
-    }, catch (e) {
-        interaction.reply(e);
+    },catch (error) {
+        console.error(error);
+        interaction.reply("Error"); // logs an error 
     }
 };

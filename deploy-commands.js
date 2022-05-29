@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { clientId, token } = require('./config.json'); local
+const { clientId, token } = require('./config.json');
 require('dotenv').config();
 
 const commands = [];
