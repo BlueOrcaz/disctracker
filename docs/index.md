@@ -13,7 +13,7 @@ Supported:
 - Minecraft User Stats
 
 In Development:
-- Steam User Stats (WIP, 0% Done)
+- Steam User Stats (WIP, 50% Done)
 
 
 Planning:
