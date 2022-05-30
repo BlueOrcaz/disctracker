@@ -18,23 +18,32 @@ module.exports = {
         const user = interaction.options.get("steamuser").value;
         const SteamAPI = require('steamapi');
         const steam = new SteamAPI(process.env.STEAM_KEY);
+        let id;
+        let lvl;
+        let summary;
+        let recentgames;
+        let bans;
+        let groups;
+        let ownedgames;
 
         if(isNaN(user)) {
-            const id = steam.resolve(`https://steamcommunity.com/id/${user}`);
-            const lvl = steam.getUserLevel(id);
-            const summary =  steam.getUserSummary(id);
-            const recentgames = steam.getUserRecentGames(id);
-            const bans = steam.getUserBans(id);
-            const groups = steam.getUserGroups(id);
-            const ownedgames = steam.getUserOwnedGames(id);
+            console.log('ID')
+            id = steam.resolve(`https://steamcommunity.com/id/${user}`);
+            lvl = steam.getUserLevel(id);
+            summary =  steam.getUserSummary(id);
+            recentgames = steam.getUserRecentGames(id);
+            bans = steam.getUserBans(id);
+            groups = steam.getUserGroups(id);
+            ownedgames = steam.getUserOwnedGames(id);
         }
         else if(!isNaN(user)) {
-            const lvl = steam.getUserLevel(user);
-            const summary =  steam.getUserSummary(user);
-            const recentgames = steam.getUserRecentGames(user);
-            const bans = steam.getUserBans(user);
-            const groups = steam.getUserGroups(user);
-            const ownedgames = steam.getUserOwnedGames(user);
+            console.log('User')
+            lvl = steam.getUserLevel(user);
+            summary =  steam.getUserSummary(user);
+            recentgames = steam.getUserRecentGames(user);
+            bans = steam.getUserBans(user);
+            groups = steam.getUserGroups(user);
+            ownedgames = steam.getUserOwnedGames(user);
         }
         const { MessageEmbed } = require('discord.js');
     
