@@ -40,7 +40,7 @@ module.exports = {
                 function varWithTimeout(action, timeout) {
                     return new Promise(function(resolve, reject) {
                         action.then(resolve, reject);
-                        setTimeout(reject, timeout);
+                        setTimeout(reject(console.log(action)), timeout);
                     })
                 }
                 recentgames = await varWithTimeout(steam.getUserRecentGames(user), 1000);
