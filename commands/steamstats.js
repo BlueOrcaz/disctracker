@@ -18,56 +18,40 @@ module.exports = {
         const user = interaction.options.get("steamuser").value;
         const SteamAPI = require('steamapi');
         const steam = new SteamAPI(process.env.STEAM_KEY);
-        let id;
-        let lvl;
-        let summary;
-        let recentgames;
-        let bans;
-        let groups;
-        let ownedgames;
+        // let id;
+        // let lvl;
+        // let summary;
+        // let recentgames;
+        // let bans;
+        // let groups;
+        // let ownedgames;
 
-        if(!isNaN(user)) {
-            console.log('Not number')
-            steam.resolve(`https://steamcommunity.com/id/${user}`).then(id2 => {id = id2})
-            steam.getUserLevel(id).then(lvl2 => {lvl = lvl2})
-            steam.getUserSummary(id).then(summary2 => {summary = summary2})
-            steam.getUserRecentGames(id).then(recengames2 => {recentgames = recengames2})
-            steam.getUserBans(id).then(bans2 => {bans = bans2})
-            steam.getUserGroups(id).then(groups2 => {groups = groups2})
-            steam.getUserOwnedGames(id).then(ownedgames2 => {ownedgames = ownedgames2})
+        async function messageSend() {
+            if(isNaN(user)) {
+                const id = await steam.resolve(`https://steamcommunity.com/id/${user}`);
+                const summary = await steam.getUserSummary(id);
+                const lvl = await steam.getUserLevel(id);
+                const recentgames = await steam.getUserRecentGames(id);
+                const bans = await steam.getUserBans(id);
+                const groups = await steam.getUserGroups(id);
+                const ownedgames = await steam.getUserOwnedGames(id);
+            }
+            else if(!isNaN(user)) {
+                const summary = await steam.getUserSummary(user);
+                const lvl = await steam.getUserLevel(user);
+                const recentgames = await steam.getUserRecentGames(user);
+                const bans = await steam.getUserBans(user);
+                const groups = await steam.getUserGroups(user);
+                const ownedgames = await steam.getUserOwnedGames(user);
+            }
+            console.log(id);
+            console.log(summary)
+            console.log(lvl)
+            console.log(recentgames)
+            console.log(bans)
+            console.log(groups)
+            console.log(ownedgames)
         }
-        else if(isNaN(user)) {
-            console.log('Number')
-            lvl = steam.getUserLevel(user);
-            summary =  steam.getUserSummary(user);
-            recentgames = steam.getUserRecentGames(user);
-            bans = steam.getUserBans(user);
-            groups = steam.getUserGroups(user);
-            ownedgames = steam.getUserOwnedGames(user);
-        }
-        console.log(`Id:${id}\nLvl:${lvl}\nSummary:${summary}\nRecentgames:${recentgames}\nBans:${bans}\nGroups:${groups}\nOwnedgames:${ownedgames}`)
-        const { MessageEmbed } = require('discord.js');
-    
-           const Embed  = new MessageEmbed()
-               .setColor('RANDOM')
-               .setTitle('Steam User Statistics')
-               .setAuthor({ name: 'DiscTracker#5743', iconURL: 'https://i.imgur.com/063Nm4O.png' /*, url: 'https://discord.js.org' */ })
-               .setDescription(`Steam user statistics for ${summary.nickname}`)
-               .setThumbnail(summary.avatar.large)
-               .addFields(
-                   { name: 'Nickname:', value: summary.nickname },
-                   { name: 'Account Creation Date:', value: `<t:${Math.round(summary.createdAt / 1000)}:R>` },
-                   { name: 'Account Level:', value: `${lvl}`},
-                   { name: 'Number of Games Owned:', value: `${JSON.stringify(ownedgames.length)}`},
-                   { name: 'Last Played:', value: `${JSON.stringify(recentgames[0].name)}`},
-                   { name: 'Number of VAC Bans:', value: `${JSON.stringify(bans.vacBans)}`},
-                   { name: 'Days since last VAC Ban:', value: `${JSON.stringify(bans.daysSinceLastBan)}`},
-                   { name: 'Last Online:', value: `<t:${Math.round(summary.lastLogOffAt / 1000)}:R>`},
-                   { name: 'Profile Link:', value: summary.url}
-                   
-               )
-        interaction.reply({ embeds: [Embed]});
-        return id, summary, lvl, recentgames, bans, groups, ownedgames;
     }, 
 
     }
