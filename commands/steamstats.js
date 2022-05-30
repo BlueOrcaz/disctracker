@@ -26,17 +26,17 @@ module.exports = {
         let groups;
         let ownedgames;
 
-        if(isNaN(user)) {
+        if(!isNaN(user)) {
             console.log('Not number')
-            id = steam.resolve(`https://steamcommunity.com/id/${user}`);
-            lvl = steam.getUserLevel(id);
-            summary =  steam.getUserSummary(id);
-            recentgames = steam.getUserRecentGames(id);
-            bans = steam.getUserBans(id);
-            groups = steam.getUserGroups(id);
-            ownedgames = steam.getUserOwnedGames(id);
+            steam.resolve(`https://steamcommunity.com/id/${user}`).then(id2 => {id = id2})
+            steam.getUserLevel(id).then(lvl2 => {lvl = lvl2})
+            steam.getUserSummary(id).then(summary2 => {summary = summary2})
+            steam.getUserRecentGames(id).then(recengames2 => {recentgames = recengames2})
+            steam.getUserBans(id).then(bans2 => {bans = bans2})
+            steam.getUserGroups(id).then(groups2 => {groups = groups2})
+            steam.getUserOwnedGames(id).then(ownedgames2 => {ownedgames = ownedgames2})
         }
-        else if(!isNaN(user)) {
+        else if(isNaN(user)) {
             console.log('Number')
             lvl = steam.getUserLevel(user);
             summary =  steam.getUserSummary(user);
