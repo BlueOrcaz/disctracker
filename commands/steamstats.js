@@ -45,6 +45,7 @@ module.exports = {
             groups = steam.getUserGroups(user);
             ownedgames = steam.getUserOwnedGames(user);
         }
+        console.log(`Id:${id}\nLvl:${lvl}\nSummary:${summary}\nRecentgames:${recentgames}\nBans:${bans}\nGroups:${groups}\nOwnedgames:${ownedgames}`)
         const { MessageEmbed } = require('discord.js');
     
            const Embed  = new MessageEmbed()
