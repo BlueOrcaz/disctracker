@@ -15,11 +15,9 @@ module.exports = {
                 
         
 	async execute(interaction) { 
-    // try { 
 
     
     const user = interaction.options.get("steamuser").value;
-    //   const user = interaction.options.getString("string", false);
     const SteamAPI = require('steamapi');
     const steam = new SteamAPI(process.env.STEAM_KEY);
     
@@ -28,15 +26,9 @@ module.exports = {
             steam.getUserLevel(id).then(lvl => {
             steam.getUserSummary(id).then(summary => { 
             steam.getUserRecentGames(id).then(recentgames => {
-//
             steam.getUserBans(id).then(bans => {
             steam.getUserGroups(id).then(groups => {
-//            if (typeof groups !== 'undefined' && groups.length > 0) {groups = 'None'} // I am not accessing an array just its length
             steam.getUserOwnedGames(id).then(ownedgames => {
-//            if (typeof ownedgames !== 'undefined' && ownedgames.length > 0) {ownedgames = 'None'} // I am not accessing an array just its length
-        //   console.log(id); debug
-        //   console.log(JSON.stringify()); debug
-        // check for the arrays if they are empty or not in order to return a "noinfo"
            const { MessageEmbed } = require('discord.js');
     
            const Embed  = new MessageEmbed()
@@ -75,18 +67,28 @@ module.exports = {
     else if (!isNaN(user)) {
         const { MessageEmbed } = require('discord.js');
         steam.getUserSummary(user).then(summary => {
+            console.log(summary);
+            
+            if (summary.lastLogOffAt = 'undefined') { summary.lastLogOffAt = 0 } 
         steam.getUserLevel(user).then(lvl => {
+            console.log(lvl);
         steam.getUserRecentGames(user).then(recentgames => {
-        if (typeof recentgames !== 'undefined' && recentgames.length > 0) {recentgames[0] = 'None'} // accessing recent game array (the 3 most recent games)
+            console.log(recentgames);
+            if (Array.isArray(recentgames) && recentgames.length)  { console.log("not empty") } else {recentgames[0] = 'Empty'}
         steam.getUserBans(user).then(bans => {    
+            console.log(bans);
         steam.getUserGroups(user).then(groups => {
-        if (typeof groups !== 'undefined' && groups.length > 0) {groups = 'None'} // I am not accessing an array just its length
-        steam.getUserOwnedGames(user).then(ownedgames => {
-        if (typeof ownedgames !== 'undefined' && ownedgames.length > 0) {ownedgames = 'None'} // I am not accessing an array just its length
-        console.log(JSON.stringify(recentgames));
+            console.log(groups);
 
-
-        // check for the arrays if they are empty or not in order to return a "noinfo"
+            const lastonline = `<t:${Math.round(summary.lastLogOffAt / 1000)}:R>`;
+            if(summary.lastLogOffAt == 0){
+                lastonline = 0;
+        }
+        
+        
+        
+        
+        
 
         
         const Embed = new MessageEmbed()
@@ -99,27 +101,22 @@ module.exports = {
                 { name: 'Nickname:', value: summary.nickname },
                 { name: 'Account Creation Date:', value: `<t:${Math.round(summary.createdAt / 1000)}:R>` },
                 { name: 'Account Level:', value: `${lvl}`},
-                { name: 'Number of Games Owned:', value: `${JSON.stringify(ownedgames.length)}`},
-                { name: 'Last Played:', value: `${JSON.stringify(recentgames[0].name)}`},
+//                { name: 'Number of Games Owned:', value: `${JSON.stringify(ownedgames.length)}`},
+                { name: 'Last Played:', value: `${JSON.stringify(recentgames[0])}`},
                 { name: 'Number of VAC Bans:', value: `${JSON.stringify(bans.vacBans)}`},
                 { name: 'Days since last VAC Ban:', value: `${JSON.stringify(bans.daysSinceLastBan)}`},
-                { name: 'Last Online:', value: `<t:${Math.round(summary.lastLogOffAt / 1000)}:R>`},
+                { name: 'Last Online:', value: lastonline},
                 { name: 'Profile Link:', value: summary.url}
             )
         interaction.reply({embeds: [Embed]});
-        return summary, lvl, recentgames, bans, groups, ownedgames;
-    })
+        return summary, lvl, recentgames, bans, groups;
     })
     })
     })
     })
     })
     }
-/* } catch (error) {
-    console.error(error);
-} */
     }, 
-
     }
 
 
