@@ -11,22 +11,21 @@ Supported:
 - Discord User Stats
 - Discord Server Stats
 - Minecraft User Stats
-- Steam User Stats
+
 
 In Development:
+- Roblox User Stats (WIP, 5% Done)
+- Steam User Stats (WIP, 80% Done)
 
 
 
 Planning:
-- Roblox User Stats (WIP, 0% Done)
 - Valorant User Stats (WIP, 0% Done)
 - Fortnite User Stats (WIP, 0% Done)
 - Hypixel User Stats  (WIP, 0% Done)
 ```
 
-Currently in Development by **bond#8985**
+Currently in Development by **bond#8985** and **U87M#7998**
 
-### Contact Information
-- [YouTube](https://www.youtube.com/channel/UCxbJH5cCtnxyKxMoUkjVifg)
-- [Instagram](https://www.instagram.com/bondmtran/?hl=en)
+### Additional Support
 - [Support Server](https://discord.gg/Q6BNJP8awe)
