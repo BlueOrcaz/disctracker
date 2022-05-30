@@ -27,7 +27,7 @@ module.exports = {
         let ownedgames;
 
         if(isNaN(user)) {
-            console.log('ID')
+            console.log('Not number')
             id = steam.resolve(`https://steamcommunity.com/id/${user}`);
             lvl = steam.getUserLevel(id);
             summary =  steam.getUserSummary(id);
@@ -37,7 +37,7 @@ module.exports = {
             ownedgames = steam.getUserOwnedGames(id);
         }
         else if(!isNaN(user)) {
-            console.log('User')
+            console.log('Number')
             lvl = steam.getUserLevel(user);
             summary =  steam.getUserSummary(user);
             recentgames = steam.getUserRecentGames(user);
