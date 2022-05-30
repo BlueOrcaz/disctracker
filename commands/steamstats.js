@@ -40,10 +40,11 @@ module.exports = {
                 function varWithTimeout(action, timeout) {
                     return new Promise(function(resolve, reject) {
                         action.then(resolve, reject);
-                        setTimeout(reject(console.log(action)), timeout);
+                        setTimeout(reject, timeout);
                     })
                 }
-                recentgames = await varWithTimeout(steam.getUserRecentGames(user), 1000);
+                recentgame = await varWithTimeout(steam.getUserRecentGames(user), 1000);
+                if(recentgame.length === 0) {recentgame = recentgame[0].name}
                 summary = await varWithTimeout(steam.getUserSummary(user), 1000);
                 lvl = await varWithTimeout(steam.getUserLevel(user), 1000);
                 recentgames = await varWithTimeout(steam.getUserRecentGames(user), 1000);
@@ -96,7 +97,7 @@ module.exports = {
                    { name: 'Account Creation Date:', value: `<t:${Math.round(summary.createdAt / 1000)}:R>` },
                    { name: 'Account Level:', value: `${lvl}`},
                    //{ name: 'Number of Games Owned:', value: `${JSON.stringify(ownedgames.length)}`},
-                   { name: 'Last Played:', value: `${JSON.stringify(recentgames[0].name)}`},
+                   { name: 'Last Played:', value: `${JSON.stringify(recentgame)}`},
                    { name: 'Number of VAC Bans:', value: `${JSON.stringify(bans.vacBans)}`},
                    { name: 'Days since last VAC Ban:', value: `${JSON.stringify(bans.daysSinceLastBan)}`},
                    { name: 'Last Online:', value: `<t:${Math.round(summary.lastLogOffAt / 1000)}:R>`},
