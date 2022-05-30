@@ -37,38 +37,46 @@ module.exports = {
                 ownedgames = await steam.getUserOwnedGames(id);
             }
             else if(!isNaN(user)) {
-                summary = await new Promise(function(myResolve, myReject) {
-                    steam.getUserSummary(user).then(myResolve, myReject)
-                    setTimeout(myReject, 1 * 1000)
-                })
-                lvl = await new Promise(function(myResolve, myReject) {
-                    steam.getUserLevel(user).then(myResolve, myReject)
-                    setTimeout(myReject, 1 * 1000)
-                })
-                recentgames = await new Promise(function(myResolve, myReject) {
-                    steam.getUserRecentGames(user).then(myResolve, myReject)
-                    setTimeout(myReject, 1 * 1000)
-                })
-                bans = await new Promise(function(myResolve, myReject) {
-                    steam.getUserBans(user).then(myResolve, myReject)
-                    setTimeout(myReject, 1 * 1000)
-                })
-                groups = await new Promise(function(myResolve, myReject) {
-                    steam.getUserGroups(user).then(myResolve, myReject)
-                    setTimeout(myReject, 1 * 1000)
-                })
-                ownedgames = await new Promise(function(myResolve, myReject) {
-                    steam.getUserOwnedGames(user).then(myResolve, myReject)
-                    setTimeout(myReject, 1 * 1000)
-                })
+                function varWithTimeout(action, timeout) {
+                    return new Promise(function(resolve, reject) {
+                        action(user).then(resolve, reject);
+                        setTimeout(reject, timeout);
+                    })
+                }
+                recentgames = await varWithTimeout(steam.getUserRecentGames, 1000);
+                console.log(recentgames)
+                // summary = await new Promise(function(myResolve, myReject) {
+                //     steam.getUserSummary(user).then(myResolve, myReject)
+                //     setTimeout(myReject, 1 * 1000)
+                // })
+                // lvl = await new Promise(function(myResolve, myReject) {
+                //     steam.getUserLevel(user).then(myResolve, myReject)
+                //     setTimeout(myReject, 1 * 1000)
+                // })
+                // recentgames = await new Promise(function(myResolve, myReject) {
+                //     steam.getUserRecentGames(user).then(myResolve, myReject)
+                //     setTimeout(myReject, 1 * 1000)
+                // })
+                // bans = await new Promise(function(myResolve, myReject) {
+                //     steam.getUserBans(user).then(myResolve, myReject)
+                //     setTimeout(myReject, 1 * 1000)
+                // })
+                // groups = await new Promise(function(myResolve, myReject) {
+                //     steam.getUserGroups(user).then(myResolve, myReject)
+                //     setTimeout(myReject, 1 * 1000)
+                // })
+                // ownedgames = await new Promise(function(myResolve, myReject) {
+                //     steam.getUserOwnedGames(user).then(myResolve, myReject)
+                //     setTimeout(myReject, 1 * 1000)
+                // })
             }
-            console.log(id);
-            console.log(summary)
-            console.log(lvl)
-            console.log(recentgames)
-            console.log(bans)
-            console.log(groups)
-            console.log(ownedgames)
+            // console.log(id);
+            // console.log(summary)
+            // console.log(lvl)
+            // console.log(recentgames)
+            // console.log(bans)
+            // console.log(groups)
+            // console.log(ownedgames)
 
             const { MessageEmbed } = require('discord.js');
     
