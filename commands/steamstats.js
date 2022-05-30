@@ -39,11 +39,11 @@ module.exports = {
             else if(!isNaN(user)) {
                 function varWithTimeout(action, timeout) {
                     return new Promise(function(resolve, reject) {
-                        action(user).then(resolve, reject);
+                        action.then(resolve, reject);
                         setTimeout(reject, timeout);
                     })
                 }
-                recentgames = await varWithTimeout(steam.getUserRecentGames, 1000);
+                recentgames = await varWithTimeout(steam.getUserRecentGames(user), 1000);
                 console.log(recentgames)
                 // summary = await new Promise(function(myResolve, myReject) {
                 //     steam.getUserSummary(user).then(myResolve, myReject)
