@@ -28,7 +28,7 @@ module.exports = {
             const groups = steam.getUserGroups(id);
             const ownedgames = steam.getUserOwnedGames(id);
         }
-        else if(!isNan(user)) {
+        else if(!isNaN(user)) {
             const lvl = steam.getUserLevel(user);
             const summary =  steam.getUserSummary(user);
             const recentgames = steam.getUserRecentGames(user);
