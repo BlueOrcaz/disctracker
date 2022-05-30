@@ -18,31 +18,31 @@ module.exports = {
         const user = interaction.options.get("steamuser").value;
         const SteamAPI = require('steamapi');
         const steam = new SteamAPI(process.env.STEAM_KEY);
-        // let id;
-        // let lvl;
-        // let summary;
-        // let recentgames;
-        // let bans;
-        // let groups;
-        // let ownedgames;
+        let id;
+        let lvl;
+        let summary;
+        let recentgames;
+        let bans;
+        let groups;
+        let ownedgames;
 
         async function messageSend() {
             if(isNaN(user)) {
-                const id = await steam.resolve(`https://steamcommunity.com/id/${user}`);
-                const summary = await steam.getUserSummary(id);
-                const lvl = await steam.getUserLevel(id);
-                const recentgames = await steam.getUserRecentGames(id);
-                const bans = await steam.getUserBans(id);
-                const groups = await steam.getUserGroups(id);
-                const ownedgames = await steam.getUserOwnedGames(id);
+                id = await steam.resolve(`https://steamcommunity.com/id/${user}`);
+                summary = await steam.getUserSummary(id);
+                lvl = await steam.getUserLevel(id);
+                recentgames = await steam.getUserRecentGames(id);
+                bans = await steam.getUserBans(id);
+                groups = await steam.getUserGroups(id);
+                ownedgames = await steam.getUserOwnedGames(id);
             }
             else if(!isNaN(user)) {
-                const summary = await steam.getUserSummary(user);
-                const lvl = await steam.getUserLevel(user);
-                const recentgames = await steam.getUserRecentGames(user);
-                const bans = await steam.getUserBans(user);
-                const groups = await steam.getUserGroups(user);
-                const ownedgames = await steam.getUserOwnedGames(user);
+                summary = await steam.getUserSummary(user);
+                lvl = await steam.getUserLevel(user);
+                recentgames = await steam.getUserRecentGames(user);
+                bans = await steam.getUserBans(user);
+                groups = await steam.getUserGroups(user);
+                ownedgames = await steam.getUserOwnedGames(user);
             }
             console.log(id);
             console.log(summary)
