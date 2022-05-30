@@ -46,7 +46,7 @@ module.exports = {
                     )
                 }
                 recentgame = await varWithTimeout(steam.getUserRecentGames(user), 1000);
-                if(!recentgame.length > 0) {recentgame = recentgame[0].name} else {recentgame = 'none'}
+                if(!recentgame.length === 0) {recentgame = recentgame[0].name} else {recentgame = 'none'}
                 summary = await varWithTimeout(steam.getUserSummary(user), 1000);
                 lvl = await varWithTimeout(steam.getUserLevel(user), 1000);
                 recentgames = await varWithTimeout(steam.getUserRecentGames(user), 1000);
