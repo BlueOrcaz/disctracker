@@ -95,7 +95,7 @@ module.exports = {
                    { name: 'Nickname:', value: summary.nickname },
                    { name: 'Account Creation Date:', value: `<t:${Math.round(summary.createdAt / 1000)}:R>` },
                    { name: 'Account Level:', value: `${lvl}`},
-                   { name: 'Number of Games Owned:', value: `${JSON.stringify(ownedgames.length)}`},
+                   //{ name: 'Number of Games Owned:', value: `${JSON.stringify(ownedgames.length)}`},
                    { name: 'Last Played:', value: `${JSON.stringify(recentgames[0].name)}`},
                    { name: 'Number of VAC Bans:', value: `${JSON.stringify(bans.vacBans)}`},
                    { name: 'Days since last VAC Ban:', value: `${JSON.stringify(bans.daysSinceLastBan)}`},
