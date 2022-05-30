@@ -38,27 +38,27 @@ module.exports = {
             }
             else if(!isNaN(user)) {
                 summary = await new Promise(function(myResolve, myReject) {
-                    steam.getUserSummary(user).then(myResolve)
+                    steam.getUserSummary(user).then(myResolve, myReject)
                     setTimeout(myReject, 1 * 1000)
                 })
                 lvl = await new Promise(function(myResolve, myReject) {
-                    steam.getUserLevel(user).then(myResolve)
+                    steam.getUserLevel(user).then(myResolve, myReject)
                     setTimeout(myReject, 1 * 1000)
                 })
                 recentgames = await new Promise(function(myResolve, myReject) {
-                    steam.getUserRecentGames(user).then(myResolve)
+                    steam.getUserRecentGames(user).then(myResolve, myReject)
                     setTimeout(myReject, 1 * 1000)
                 })
                 bans = await new Promise(function(myResolve, myReject) {
-                    steam.getUserBans(user).then(myResolve)
+                    steam.getUserBans(user).then(myResolve, myReject)
                     setTimeout(myReject, 1 * 1000)
                 })
                 groups = await new Promise(function(myResolve, myReject) {
-                    steam.getUserGroups(user).then(myResolve)
+                    steam.getUserGroups(user).then(myResolve, myReject)
                     setTimeout(myReject, 1 * 1000)
                 })
                 ownedgames = await new Promise(function(myResolve, myReject) {
-                    steam.getUserOwnedGames(user).then(myResolve)
+                    steam.getUserOwnedGames(user).then(myResolve, myReject)
                     setTimeout(myReject, 1 * 1000)
                 })
             }
