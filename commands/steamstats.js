@@ -39,7 +39,7 @@ module.exports = {
             else if(!isNaN(user)) {
                 function varWithTimeout(action, timeout) {
                     return new Promise(function(resolve, reject) {
-                        action.then(resolve, reject);
+                        await action.then(resolve, reject);
                         setTimeout(reject, timeout);
                     })
                 }
@@ -50,7 +50,7 @@ module.exports = {
                 recentgames = await varWithTimeout(steam.getUserRecentGames(user), 1000);
                 bans = await varWithTimeout(steam.getUserBans(user), 1000);
                 groups = await varWithTimeout(steam.getUserGroups(user), 1000);
-                //ownedgames = await varWithTimeout(steam.getUserOwnedGames(user), 1000);
+                ownedgames = await varWithTimeout(steam.getUserOwnedGames(user), 1000);
                 // summary = await new Promise(function(myResolve, myReject) {
                 //     steam.getUserSummary(user).then(myResolve, myReject)
                 //     setTimeout(myReject, 1 * 1000)
