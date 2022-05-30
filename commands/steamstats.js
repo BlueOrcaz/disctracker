@@ -39,9 +39,11 @@ module.exports = {
             else if(!isNaN(user)) {
                 function varWithTimeout(action, timeout) {
                     return new Promise(function(resolve, reject) {
-                        await action.then(resolve, reject);
+                        action.then(resolve, reject);
                         setTimeout(reject, timeout);
-                    })
+                    }).then(
+                        function(error) {console.log('error')}
+                    )
                 }
                 recentgame = await varWithTimeout(steam.getUserRecentGames(user), 1000);
                 if(!recentgame.length === 0) {recentgame = recentgame[0].name} else {recentgame = 'none'}
