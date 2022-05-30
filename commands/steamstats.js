@@ -52,6 +52,7 @@ module.exports = {
             console.log(groups)
             console.log(ownedgames)
         }
+        messageSend();
     }, 
 
     }
