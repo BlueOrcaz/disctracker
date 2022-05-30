@@ -37,12 +37,30 @@ module.exports = {
                 ownedgames = await steam.getUserOwnedGames(id);
             }
             else if(!isNaN(user)) {
-                summary = await steam.getUserSummary(user);
-                lvl = await steam.getUserLevel(user);
-                recentgames = await steam.getUserRecentGames(user);
-                bans = await steam.getUserBans(user);
-                groups = await steam.getUserGroups(user);
-                ownedgames = await steam.getUserOwnedGames(user);
+                summary = new Promise(function(myResolve, myReject) {
+                    steam.getUserSummary(user).then(myResolve)
+                    setTimeout(myReject, 1 * 1000)
+                })
+                lvl = new Promise(function(myResolve, myReject) {
+                    steam.getUserLevel(user).then(myResolve)
+                    setTimeout(myReject, 1 * 1000)
+                })
+                recentgames = new Promise(function(myResolve, myReject) {
+                    steam.getUserRecentGames(user).then(myResolve)
+                    setTimeout(myReject, 1 * 1000)
+                })
+                bans = new Promise(function(myResolve, myReject) {
+                    steam.getUserBans(user).then(myResolve)
+                    setTimeout(myReject, 1 * 1000)
+                })
+                groups = new Promise(function(myResolve, myReject) {
+                    steam.getUserGroups(user).then(myResolve)
+                    setTimeout(myReject, 1 * 1000)
+                })
+                ownedgames = new Promise(function(myResolve, myReject) {
+                    steam.getUserOwnedGames(user).then(myResolve)
+                    setTimeout(myReject, 1 * 1000)
+                })
             }
             console.log(id);
             console.log(summary)
