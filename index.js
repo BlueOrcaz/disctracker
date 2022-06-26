@@ -57,6 +57,8 @@ client.on('interactionCreate', async interaction => {
 		.setDescription("There was an Error exceuting this Command! Please make sure that your account details are set to public and/or you didn't mistype!")
 		.setTimestamp()
 		await interaction.reply({ embeds: [Embed] });
+
+		// await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true }); // logs an error 
 	}
 });
 
