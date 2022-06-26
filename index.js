@@ -61,6 +61,14 @@ client.on('shardError', error => {
 
 process.on('unhandledRejection', error => {
 	console.error('Unhandled promise rejection:', error);
+
+	const { MessageEmbed } = require('discord.js');
+	const Embed = new MessageEmbed()
+		.setColor("RANDOM")
+		.setTitle("Test")
+		.setTimestamp()
+	interaction.reply({ embeds: [Embed] });
+
 });
 
 
