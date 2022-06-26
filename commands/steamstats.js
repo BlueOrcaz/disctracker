@@ -4,7 +4,7 @@ require('dotenv').config();
 
 module.exports = {   
 	data: new SlashCommandBuilder()
-		.setName('steamstatsold')
+		.setName('steamstats')
 		.setDescription('replies with your steam account stats')
         .addStringOption(option => 
             option

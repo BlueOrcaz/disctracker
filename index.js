@@ -1,6 +1,7 @@
 require('dotenv').config();
 const fs = require('node:fs'); // Provides a lot of very useful functionality to access and interact with the file system
 const { Client, Intents, Collection } = require('discord.js');  // To define Client, Intents, and collection discordjs is required
+const { disconnect } = require('node:process');
 const { token } = process.env.DISCORD_TOKEN //require('./config.json'); // read config.json to find the discord token
 const client = new Client({ intents: [Intents.FLAGS.GUILDS]}); // Enables intents 
 
@@ -52,6 +53,7 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true }); // logs an error 
 	}
 });
+
 
 client.on('shardError', error => {
 	console.error("A websocket connection encountered an error:", error);
