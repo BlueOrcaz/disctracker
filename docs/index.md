@@ -11,11 +11,11 @@ Supported:
 - Discord User Stats
 - Discord Server Stats
 - Minecraft User Stats
+- Steam User Stats
 
 
 In Development:
 - Roblox User Stats (WIP, 5% Done)
-- Steam User Stats (WIP, 80% Done)
 
 
 
