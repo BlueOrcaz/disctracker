@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { time } = require('console');
 const axios = require('axios').default;
 
 
@@ -10,7 +11,7 @@ module.exports = {
         .addStringOption(option => 
             option
                 .setName('username')
-                .setDescription('Put Roblox Username here to check the users statistics')
+                .setDescription('Put your roblox id here to check the users statistics')
                 .setRequired(true) 
             ),
     
@@ -28,20 +29,22 @@ module.exports = {
         
         axios.get(`https://users.roblox.com/v1/users/${user}`)
             .then(function (response) {     
+                
             // debug: console.log(response.data); 
+                const date = new Date(response.data.created);            
                 const { MessageEmbed } = require('discord.js');
                 const Embed = new MessageEmbed()
                     .setColor("RANDOM")
                     .setTitle("Roblox User Statistics")
                     .setAuthor({ name: 'DiscTracker#5743', iconURL: 'https://i.imgur.com/063Nm4O.png' /*, url: 'https://discord.js.org' */ })
-                    .setDescription(`Roblox User Statistics for UserId ${user}`)
+                    .setDescription(`Roblox User Statistics for ${response.data.name}`)
                 //    .setThumbnail(thumbnail.data[2].imageUrl)
                     .addFields(
-                        { name: 'Username', value: `${response.data.name}` },
-                        { name: 'DisplayName', value: `${response.data.displayName}` },
-                        { name: 'Banned:', value: `${response.data.isBanned }` },
-                        { name: 'Register Date:', value: `${response.data.created }` },
-                        { name: 'Profile Description:', value: `${response.data.description}` },
+                        { name: 'Username:', value: `${response.data.name}` },
+                        { name: 'DisplayName:', value: `${response.data.displayName}` },
+                        { name: 'Ban Status:', value: `${response.data.isBanned }` },
+                        { name: 'Register Date:', value: `<t:${Math.floor(date / 1000)}:R>` },
+                        { name: 'Profile Description:', value: `"${response.data.description}"` },
                         { name: 'UserId', value: `${response.data.id}` }
                     )
                 .setTimestamp()
