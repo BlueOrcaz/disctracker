@@ -1,57 +1,63 @@
-// does not function at the moment (going to use restapi)
-
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { request } = require('undici');
+const axios = require('axios').default;
 
 
 module.exports = {
+    
 	data: new SlashCommandBuilder()
 		.setName('robloxstats')
-		.setDescription('Put your Roblox Username to check your stats!')
+		.setDescription('Checks your roblox statistics!')
         .addStringOption(option => 
             option
-                .setName('robloxuser')
-                .setDescription('Put your Roblox Username to check your stats!')
-                .setRequired(false)
-            
-        ),
+                .setName('username')
+                .setDescription('Put Roblox Username here to check the users statistics')
+                .setRequired(true) 
+            ),
+    
 	async execute(interaction) {
         
-        async function getJSONResponse(body) {
-            let fullBody = '';
         
-            for await (const data of body) {
-                fullBody += data.toString();
-            }
-        
-            return JSON.parse(fullBody);
-        }
-        
-        
-        const user = interaction.options.get("robloxuser").value;
-        console.log(user);
-    
-    //    const catResult = await request('https://aws.random.cat/meow');
-    //    const { file } = await getJSONResponse(catResult.body);
-    //   const convertinfo = await request(`https://api.roblox.com/users/get-by-username?username=${user}`);
-    //   const { file } = await getJSONResponse(convertinfo.body);
-    //    console.log(file);
-    
+        const user = interaction.options.get("username").value;
 
-    console.log(fetch('https://api.roblox.com/users/get-by-username?username=Team_49'));
-    
-    
+        
+
        
 
-        const { MessageEmbed } = require('discord.js');
-        const Embed = new MessageEmbed()
-            .setColor('RANDOM')
-            .setTitle('Roblox User Statistics')
-            .setAuthor({ name: 'DiscTracker#5743', iconURL: 'https://i.imgur.com/063Nm4O.png' /*, url: 'https://discord.js.org' */ })
-            .setDescription(`Roblox user statistics for ${user}`)
-            .setThumbnail(``)
-        
-        
-      //  await interaction.reply('ping');
+        axios.get(`https://users.roblox.com/v1/users/${user}`)
+
+            .then(function (response) {
+                axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${user}&size=720x720&format=Png&isCircular=false`)
+                    .then(function (thumbnail) {
+                        console.log(thumbnail.data[0]);  
+                    
+            // debug: console.log(response.data); 
+                const { MessageEmbed } = require('discord.js');
+                const Embed = new MessageEmbed()
+                    .setColor("RANDOM")
+                    .setTitle("Roblox User Statistics")
+                    .setAuthor({ name: 'DiscTracker#5743', iconURL: 'https://i.imgur.com/063Nm4O.png' /*, url: 'https://discord.js.org' */ })
+                    .setDescription(`Roblox User Statistics for UserId ${user}`)
+                //    .setThumbnail(thumbnail.data[2].imageUrl)
+                    .addFields(
+                        { name: 'Username', value: `${response.data.name}` },
+                        { name: 'DisplayName', value: `${response.data.displayName}` },
+                        { name: 'Banned:', value: `${response.data.isBanned }` },
+                        { name: 'Register Date:', value: `${response.data.created }` },
+                        { name: 'Profile Description:', value: `${response.data.description}` },
+                        { name: 'UserId', value: `${response.data.id}` }
+                    )
+                .setTimestamp()
+                interaction.reply({ embeds: [Embed]});
+                return thumbnail, response;
+                        
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        })
+
+
+		// await interaction.reply('ping');
+        // Team_49 Roblox ID: 305274882
 	},
 };
