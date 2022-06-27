@@ -12,17 +12,18 @@ Supported:
 - Discord Server Stats
 - Minecraft User Stats
 - Steam User Stats
+- Roblox User Stats
 
 
 In Development:
-- Roblox User Stats (WIP, 5% Done)
+- Hypixel User Stats  (WIP, 0% Done)
 
 
 
 Planning:
 - Valorant User Stats (WIP, 0% Done)
 - Fortnite User Stats (WIP, 0% Done)
-- Hypixel User Stats  (WIP, 0% Done)
+
 ```
 
 Currently in Development by **bond#8985** and **U87M#7998**

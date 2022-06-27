@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { time } = require('console');
 const axios = require('axios').default;
 
 
@@ -15,15 +14,8 @@ module.exports = {
                 .setRequired(true) 
             ),
     
-	async execute(interaction) {
-        
-        
+	async execute(interaction) {   
         const user = interaction.options.get("username").value;
-
-
-
-
-        
         axios.get(`https://users.roblox.com/v1/users/${user}`)
             .then(function (response) {    
                 axios.get(`https://thumbnails.roblox.com/v1/users/avatar-bust?userIds=${user}&size=420x420&format=Png&isCircular=false`)
@@ -56,9 +48,6 @@ module.exports = {
         .catch(function (error) {
             console.log(error);
         });
-        
-
-
 		// await interaction.reply('ping');
         // Team_49 Roblox ID: 305274882
 	},
