@@ -20,15 +20,16 @@ module.exports = {
         
         const user = interaction.options.get("username").value;
 
-        axios.get(`https://thumbnails.roblox.com/v1/users/avatar-bust?userIds=${user}&size=420x420&format=Png&isCircular=false`)
-            .then(function (response) { 
-                console.log(response.data)
-            })
+
 
 
         
         axios.get(`https://users.roblox.com/v1/users/${user}`)
-            .then(function (response) {     
+            .then(function (response) {    
+                axios.get(`https://thumbnails.roblox.com/v1/users/avatar-bust?userIds=${user}&size=420x420&format=Png&isCircular=false`)
+                    .then(function (thumb) { 
+                    console.log(thumb.data)
+                    
                 
             // debug: console.log(response.data); 
                 const date = new Date(response.data.created);            
@@ -49,8 +50,9 @@ module.exports = {
                     )
                 .setTimestamp()
                 interaction.reply({ embeds: [Embed]});
-                return response;       
+                return response, thumb;       
             })
+        })
             .catch(function (error) {
                 console.log(error);
             });
