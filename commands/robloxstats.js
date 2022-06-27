@@ -19,17 +19,15 @@ module.exports = {
         
         const user = interaction.options.get("username").value;
 
+        axios.get(`https://thumbnails.roblox.com/v1/users/avatar-bust?userIds=${user}&size=420x420&format=Png&isCircular=false`)
+            .then(function (response) { 
+                console.log(response.data)
+            })
+
+
         
-
-       
-
         axios.get(`https://users.roblox.com/v1/users/${user}`)
-
-            .then(function (response) {
-                axios.get(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${user}&size=720x720&format=Png&isCircular=false`)
-                    .then(function (thumbnail) {
-                        console.log(thumbnail.data[0]);  
-                    
+            .then(function (response) {     
             // debug: console.log(response.data); 
                 const { MessageEmbed } = require('discord.js');
                 const Embed = new MessageEmbed()
@@ -48,13 +46,12 @@ module.exports = {
                     )
                 .setTimestamp()
                 interaction.reply({ embeds: [Embed]});
-                return thumbnail, response;
-                        
+                return response;       
             })
             .catch(function (error) {
                 console.log(error);
-            })
-        })
+            });
+        
 
 
 		// await interaction.reply('ping');
