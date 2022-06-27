@@ -5,6 +5,12 @@ module.exports = {
 		.setName('ping')
 		.setDescription('Replies with Pong!'),
 	async execute(interaction) {
-		await interaction.reply('Pong!');
+		const { MessageEmbed } = require('discord.js');
+		const Embed = new MessageEmbed()
+			.setColor("RANDOM")
+			.setAuthor({ name: 'DiscTracker#5743', iconURL: 'https://i.imgur.com/063Nm4O.png' /*, url: 'https://discord.js.org' */ })
+			.setDescription(`🏓 Pong! Latency is ${Math.abs(Date.now() - interaction.createdTimestamp)} ms`)
+			.setTimestamp()
+		await interaction.reply({ embeds: [Embed] });
 	},
 };
