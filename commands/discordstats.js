@@ -3,11 +3,11 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('userstats')
+		.setName('discordstats')
 		.setDescription('replies with your discord stats')
         .addUserOption(option => 
             option
-                .setName('discordstats')
+                .setName('user')
                 .setDescription('Put Discord username in here to check user stats')
                 .setRequired(true) 
             ),
