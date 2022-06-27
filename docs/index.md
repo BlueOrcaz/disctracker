@@ -21,8 +21,20 @@ In Development:
 
 
 Planning:
-- Valorant User Stats (WIP, 0% Done)
-- Fortnite User Stats (WIP, 0% Done)
+- Valorant 
+- Fortnite 
+- Apex Legends
+- Krunker 
+- Pubg
+- Overwatch
+- Destiny 2
+- Call of Duty
+- Rainbow 6
+- League of Legends
+- CSGO
+- Rocket League
+- TFT
+- Epic Games
 
 ```
 
