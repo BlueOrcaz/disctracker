@@ -28,7 +28,7 @@ module.exports = {
             .then(function (response) {    
                 axios.get(`https://thumbnails.roblox.com/v1/users/avatar-bust?userIds=${user}&size=420x420&format=Png&isCircular=false`)
                     .then(function (thumb) { 
-                    console.log(thumb.data)
+                    console.log(thumb.data.data[0].imageUrl);
                     
                 
             // debug: console.log(response.data); 
@@ -39,7 +39,7 @@ module.exports = {
                     .setTitle("Roblox User Statistics")
                     .setAuthor({ name: 'DiscTracker#5743', iconURL: 'https://i.imgur.com/063Nm4O.png' /*, url: 'https://discord.js.org' */ })
                     .setDescription(`Roblox User Statistics for ${response.data.name}`)
-                //    .setThumbnail(thumbnail.data[2].imageUrl)
+                    .setThumbnail(thumb.data.data[0].imageUrl)
                     .addFields(
                         { name: 'Username:', value: `${response.data.name}` },
                         { name: 'DisplayName:', value: `${response.data.displayName}` },
@@ -53,9 +53,9 @@ module.exports = {
                 return response, thumb;       
             })
         })
-            .catch(function (error) {
-                console.log(error);
-            });
+        .catch(function (error) {
+            console.log(error);
+        });
         
 
 
