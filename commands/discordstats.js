@@ -7,7 +7,7 @@ module.exports = {
 		.setDescription('replies with your discord stats')
         .addUserOption(option => 
             option
-                .setName('user')
+                .setName('discordstats')
                 .setDescription('Put Discord username in here to check user stats')
                 .setRequired(true) 
             ),
