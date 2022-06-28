@@ -37,13 +37,10 @@ module.exports = {
                     )
                 .setTimestamp()
                 interaction.reply({ embeds: [Embed]});
-            }) 
+            })  
             .catch(function (error) {
                 console.log(error);
             });
-            
-		// await interaction.reply('ping');
-        // Team_49 Roblox ID: 305274882
 	},
 };
 
