@@ -18,14 +18,18 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "fs": "^0.0.1-security",
+    "ioredis": "^5.1.0",
     "mcapi": "^1.0.1",
     "mojang-api": "^0.0.2",
     "moment": "^2.29.3",
+    "mongoose": "^6.4.1",
     "namemc": "^1.8.16",
     "node": "^17.7.2",
     "node-fetch": "^3.2.6",
     "path": "^0.12.7",
+    "redis": "^4.1.0",
     "steamapi": "^2.2.0",
-    "undici": "^5.5.1"
+    "undici": "^5.5.1",
+    "util": "^0.12.4"
   }
 }

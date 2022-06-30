@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const axios = require('axios').default;
 
+
 module.exports = {
     
 	data: new SlashCommandBuilder()
@@ -18,7 +19,11 @@ module.exports = {
         const key = process.env.HYPIXEL_KEY;
         axios.get(`https://api.hypixel.net/player?key=${key}&name=${user}`)
             .then(function (stats) {
-                console.log(stats.data.player.displayname);
+
+                console.log(User);
+               
+
+ 
 
                 const { MessageEmbed } = require('discord.js');
                 const Embed = new MessageEmbed()
@@ -36,6 +41,8 @@ module.exports = {
                         { name: 'UUID', value: `${stats.data.player.uuid}` }
                     )
                 .setTimestamp()
+
+                
                 interaction.reply({ embeds: [Embed]});
             })  
             .catch(function (error) {

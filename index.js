@@ -7,6 +7,8 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS]}); // Enables intent
 
 
 
+
+
 client.commands = new Collection(); // Utility class - holds key value pairs and remembers the original insertion order of the keys. 
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js')); // Filters out all other files with the exception of .js files
@@ -20,8 +22,7 @@ for (const file of commandFiles) {
 
 
 client.once('ready', () => { 
-    console.log('Bot Ready'); // logs to the console when the bot is turned on and ready to go
-
+    const ready = console.log('Bot Ready'); // logs to the console when the bot is turned on and ready to go
 });
 
 
@@ -66,15 +67,13 @@ client.on('interactionCreate', async interaction => {
 
 client.on('shardError', error => {
 	console.error("A websocket connection encountered an error:", error);
-
 });
 
 process.on('unhandledRejection', error => {
 	console.error('Unhandled promise rejection:', error);
-
-	
-
 });
+
+
 
 
 client.login(token);
