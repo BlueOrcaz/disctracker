@@ -7,8 +7,6 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS]}); // Enables intent
 
 
 
-
-
 client.commands = new Collection(); // Utility class - holds key value pairs and remembers the original insertion order of the keys. 
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js')); // Filters out all other files with the exception of .js files
@@ -22,7 +20,7 @@ for (const file of commandFiles) {
 
 
 client.once('ready', () => { 
-    const ready = console.log('Bot Ready'); // logs to the console when the bot is turned on and ready to go
+    console.log(`Logged in as ${client.user.tag}`); // logs to the console when the bot is turned on and ready to go
 });
 
 

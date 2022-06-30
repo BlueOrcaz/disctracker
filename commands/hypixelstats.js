@@ -19,12 +19,6 @@ module.exports = {
         const key = process.env.HYPIXEL_KEY;
         axios.get(`https://api.hypixel.net/player?key=${key}&name=${user}`)
             .then(function (stats) {
-
-                console.log(User);
-               
-
- 
-
                 const { MessageEmbed } = require('discord.js');
                 const Embed = new MessageEmbed()
                 .setColor("RANDOM")
