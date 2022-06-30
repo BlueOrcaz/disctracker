@@ -13,10 +13,11 @@ Supported:
 - Minecraft User Stats
 - Steam User Stats
 - Roblox User Stats
+- Hypixel User Stats
 
 
 In Development:
-- Hypixel User Stats  (WIP, 0% Done)
+
 
 
 
