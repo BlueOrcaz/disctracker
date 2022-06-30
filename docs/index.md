@@ -17,12 +17,11 @@ Supported:
 
 
 In Development:
-
+- Valorant 
 
 
 
 Planning:
-- Valorant 
 - Fortnite 
 - Apex Legends
 - Krunker 
