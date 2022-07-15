@@ -3,6 +3,9 @@ const fs = require('node:fs'); // Provides a lot of very useful functionality to
 const { Client, Intents, Collection } = require('discord.js');  // To define Client, Intents, and collection discordjs is required
 const { token } = process.env.DISCORD_TOKEN //require('./config.json'); // read config.json to find the discord token
 const client = new Client({ intents: [Intents.FLAGS.GUILDS]}); // Enables intents 
+const mongoose = require('mongoose');
+const User = require('./schemas/UserSchema');
+
 
 
 
@@ -48,6 +51,12 @@ client.on('interactionCreate', async interaction => {
 	if (!command) return; // if a command is detected then it executes the command
 	try {
 		await command.execute(interaction); // executes command
+		const newUser = await User.create({
+			username: interaction.user,
+			discordId: interaction.id
+		});
+		
+		const savedUser = await newUser.save();
 	} catch (error) {
 		console.error(error);
 		const { MessageEmbed } = require('discord.js');
@@ -61,6 +70,18 @@ client.on('interactionCreate', async interaction => {
 		// await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true }); // logs an error 
 	}
 });
+
+mongoose.connect(process.env.MONGODB_SRV, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+}).then(()=>{
+	console.log("Connected to the Database");
+}).catch((err) =>{
+	console.log(err);
+});
+
+
+	
 
 
 client.on('shardError', error => {

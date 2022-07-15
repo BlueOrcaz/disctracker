@@ -2,6 +2,8 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const axios = require('axios').default;
 
 
+
+
 module.exports = {
     
 	data: new SlashCommandBuilder()
@@ -14,7 +16,9 @@ module.exports = {
                 .setRequired(true) 
             ),
     
-	async execute(interaction) {   
+	async execute(interaction) {  
+
+
         const user = interaction.options.get("username").value;
         const key = process.env.HYPIXEL_KEY;
         axios.get(`https://api.hypixel.net/player?key=${key}&name=${user}`)
