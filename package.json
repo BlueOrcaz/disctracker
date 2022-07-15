@@ -9,6 +9,7 @@
   "author": "BlueOrcaz/Bond Tran",
   "license": "ISC",
   "dependencies": {
+    "3": "^2.1.0",
     "@discordjs/builders": "^0.13.0",
     "@discordjs/rest": "^0.4.1",
     "axios": "^0.27.2",
@@ -30,6 +31,8 @@
     "path": "^0.12.7",
     "redis": "^4.1.0",
     "sequelize": "^6.21.2",
+    "sqlite": "^4.1.1",
+    "sqlite3": "^5.0.9",
     "steamapi": "^2.2.0",
     "undici": "^5.5.1",
     "util": "^0.12.4"
