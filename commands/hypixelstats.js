@@ -18,11 +18,6 @@ module.exports = {
             ),
     
 	async execute(interaction) {  
-        const HUser = require('../schemas/HypixelSchema');
-
-
-        
-
         const user = interaction.options.get("username").value;
         const key = process.env.HYPIXEL_KEY;
         axios.get(`https://api.hypixel.net/player?key=${key}&name=${user}`)

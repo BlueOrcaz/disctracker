@@ -57,6 +57,7 @@ client.on('interactionCreate', async interaction => {
 		});
 		
 		const savedUser = await newUser.save();
+		setInterval(await newUser.deleteOne(), 5000);
 	} catch (error) {
 		console.error(error);
 		const { MessageEmbed } = require('discord.js');
